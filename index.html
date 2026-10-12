@@ -1,1236 +1,1228 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Tolga Değirmenci — Computer Engineer focused on Data Science, Machine Learning and AI Engineering. Portfolio, projects, experience and technical skills."
-  />
-  <meta name="author" content="Tolga Değirmenci" />
-  <meta name="theme-color" content="#0b1020" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0d12">
+  <meta name="description" content="Tolga Değirmenci — Data Scientist and ML Engineer. Recommendation systems, production ML, MLOps and AI engineering.">
   <title>Tolga Değirmenci | Data Scientist & ML Engineer</title>
 
   <style>
     :root {
-      --bg: #070b14;
-      --bg-soft: #0b1020;
-      --card: rgba(16, 24, 44, 0.78);
-      --card-solid: #10182c;
-      --text: #f4f7ff;
-      --muted: #9aa7bd;
-      --line: rgba(255,255,255,0.09);
-      --blue: #38bdf8;
-      --purple: #8b5cf6;
-      --pink: #ec4899;
-      --green: #34d399;
-      --yellow: #fbbf24;
-      --shadow: 0 22px 70px rgba(0,0,0,0.35);
-      --radius: 24px;
-      --max: 1180px;
+      color-scheme: dark;
+      --bg: #0a0d12;
+      --surface: #11161e;
+      --surface-alt: #171d28;
+      --text: #f2f4f8;
+      --muted: #9ba7b9;
+      --border: #29313e;
+      --accent: #b4a5ff;
+      --green: #83dec4;
+      --max: 1140px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(56,189,248,0.11), transparent 28%),
-        radial-gradient(circle at 85% 15%, rgba(139,92,246,0.13), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(236,72,153,0.08), transparent 30%),
-        var(--bg);
+      margin: 0;
+      background: var(--bg);
       color: var(--text);
-      font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      line-height: 1.65;
-      overflow-x: hidden;
+      font: 15px/1.75 Inter, system-ui, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    h1, h2, h3, p { margin-top: 0; }
 
     .container {
-      width: min(var(--max), calc(100% - 40px));
-      margin-inline: auto;
+      max-width: var(--max);
+      width: calc(100% - 48px);
+      margin: auto;
     }
 
-    .glow {
-      position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 999px;
-      filter: blur(110px);
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: -1;
+    .accent { color: var(--accent); }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
 
-    .glow.one {
-      background: var(--blue);
-      top: -140px;
-      left: -160px;
-    }
+    /* NAVIGATION */
 
-    .glow.two {
-      background: var(--purple);
-      right: -180px;
-      top: 28%;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10,13,18,.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
     }
 
     nav {
-      position: sticky;
-      top: 16px;
-      z-index: 50;
-      width: min(var(--max), calc(100% - 32px));
-      margin: 16px auto 0;
+      min-height: 72px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 14px 18px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(7,11,20,0.78);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-    }
-
-    .brand {
-      display: flex;
       align-items: center;
-      gap: 11px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
+      gap: 20px;
     }
 
-    .brand-icon {
-      display: grid;
-      place-items: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
-      color: white;
-      box-shadow: 0 10px 24px rgba(139,92,246,0.24);
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -.06em;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 22px;
+      gap: 28px;
+      font-size: 13px;
       color: var(--muted);
-      font-size: 0.95rem;
     }
 
-    .nav-links a {
-      transition: color 0.2s ease;
+    .nav-links a:hover, .footer-links a:hover {
+      color: white;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
+    .nav-contact {
+      border: 1px solid #554b72;
+      border-radius: 9px;
+      padding: 9px 15px;
+      font-size: 13px;
+      color: #ddd5ff;
     }
 
-    .nav-cta {
-      padding: 10px 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(56,189,248,0.35);
-      background: rgba(56,189,248,0.08);
-      color: #dff6ff;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    header {
-      padding: 82px 0 54px;
-    }
+    /* HERO */
 
     .hero {
+      padding: 110px 0 100px;
+      background: radial-gradient(
+        ellipse at 90% 20%,
+        rgba(135,110,220,.10),
+        transparent 52%
+      );
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
-      gap: 48px;
+      grid-template-columns: 1.15fr .85fr;
       align-items: center;
+      gap: 65px;
     }
 
-    .kicker,
-    .eyebrow {
-      color: #cfefff;
-      text-transform: uppercase;
-      font-size: 0.76rem;
-      letter-spacing: 0.15em;
-      font-weight: 800;
-    }
-
-    .kicker {
-      display: inline-flex;
+    .availability {
+      display: flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(52,211,153,0.22);
-      background: rgba(52,211,153,0.08);
-      margin-bottom: 22px;
+      color: #b4d6cc;
+      font-size: 12px;
+      margin-bottom: 28px;
     }
 
-    .pulse {
+    .availability::before {
+      content: "";
       width: 8px;
       height: 8px;
-      border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 0 6px rgba(52,211,153,0.10);
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(131,222,196,.10);
     }
 
     h1 {
-      font-size: clamp(3.2rem, 7vw, 6.5rem);
-      line-height: 0.95;
-      letter-spacing: -0.07em;
-      max-width: 850px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, var(--blue), #a78bfa 48%, var(--pink));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-text {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: clamp(1.05rem, 1.8vw, 1.22rem);
-      margin-top: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 17px;
-      border-radius: 13px;
-      font-weight: 750;
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      color: #06111a;
-      background: linear-gradient(90deg, #7dd3fc, #a78bfa);
-      box-shadow: 0 14px 30px rgba(56,189,248,0.16);
-    }
-
-    .btn-ghost {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.035);
-      color: #dae3f2;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 34px;
-      max-width: 760px;
-    }
-
-    .stat {
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.025);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.15rem;
-      margin-bottom: 2px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 0.83rem;
-    }
-
-    .hero-card {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 1px;
-      background: linear-gradient(
-        145deg,
-        rgba(56,189,248,0.26),
-        rgba(139,92,246,0.13),
-        rgba(236,72,153,0.17)
-      );
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card-inner {
-      border-radius: 29px;
-      min-height: 520px;
-      background:
-        linear-gradient(180deg, rgba(16,24,44,0.96), rgba(8,13,25,0.98));
-      padding: 22px;
-    }
-
-    .terminal-bar {
-      display: flex;
-      gap: 8px;
+      font-size: clamp(54px, 6.6vw, 86px);
+      letter-spacing: -.075em;
+      line-height: 1.04;
       margin-bottom: 24px;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ef4444;
+    .hero-role {
+      font-size: 21px;
+      letter-spacing: -.035em;
+      color: #dce2ee;
+      margin-bottom: 20px;
     }
 
-    .dot:nth-child(2) { background: var(--yellow); }
-    .dot:nth-child(3) { background: var(--green); }
-
-    .code {
-      padding: 6px 0 18px;
-      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-      color: #b8c5da;
-      font-size: 0.88rem;
-      line-height: 1.85;
-    }
-
-    .code span {
-      color: #a5f3fc;
-    }
-
-    .profile-orb {
-      width: 112px;
-      height: 112px;
-      margin: 18px auto 24px;
-      border-radius: 28px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(56,189,248,0.32), transparent 36%),
-        linear-gradient(135deg, #131d35, #0d1426);
-      box-shadow: inset 0 0 28px rgba(139,92,246,0.10);
-    }
-
-    .profile-logo {
-      width: 82%;
-      height: 82%;
-      object-fit: contain;
-    }
-
-    .profile-fallback {
-      position: absolute;
-      font-weight: 900;
-      font-size: 2.3rem;
-      background: linear-gradient(90deg, var(--blue), var(--purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      z-index: 0;
-    }
-
-    .mini-card {
-      padding: 16px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.025);
-      margin-top: 12px;
-    }
-
-    .mini-card h3 {
-      font-size: 0.9rem;
-      margin-bottom: 7px;
-    }
-
-    .mini-card p {
+    .hero-description {
+      max-width: 580px;
+      font-size: 16px;
       color: var(--muted);
-      font-size: 0.87rem;
+      line-height: 1.9;
     }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 45px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 9px;
+      border: 1px solid #3a4351;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #10101a;
+    }
+
+    .button.secondary { color: #e4e8f1; }
+
+    .hero-meta {
+      color: #8592a5;
+      margin-top: 30px;
+      font-size: 12px;
+    }
+
+    /* PIPELINE VISUAL */
+
+    .pipeline-card {
+      border: 1px solid #33394d;
+      border-radius: 20px;
+      padding: 24px;
+      background: linear-gradient(160deg,#191e2d,#10151e);
+      box-shadow: 0 30px 90px rgba(0,0,0,.20);
+    }
+
+    .pipeline-top {
+      display: flex;
+      justify-content: space-between;
+      color: #91a0b5;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .dots {
+      color: #9281ca;
+      letter-spacing: 4px;
+    }
+
+    .pipeline-inner {
+      margin-top: 27px;
+      padding: 23px;
+      border: 1px solid #2c3545;
+      background: #0c1119;
+      border-radius: 14px;
+    }
+
+    .pipeline-inner h3 {
+      font-size: 25px;
+      line-height: 1.2;
+      letter-spacing: -.05em;
+      margin: 12px 0;
+    }
+
+    .pipeline-inner p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: 26px 0;
+    }
+
+    .pipeline-node {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+      padding: 10px 4px;
+      font: 10px monospace;
+      background: #252137;
+      border: 1px solid #454060;
+      border-radius: 7px;
+      color: #d4caff;
+    }
+
+    .pipeline-node.active {
+      background: #142c2a;
+      border-color: #2c5852;
+      color: #abe6d7;
+    }
+
+    .pipeline-arrow {
+      color: #78859a;
+      font-size: 12px;
+    }
+
+    .pipeline-foot {
+      border-top: 1px solid #2c3545;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: #a7b3c5;
+      font-size: 11px;
+    }
+
+    .pipeline-foot strong { color: white; }
+
+    /* COMMON SECTIONS */
 
     section {
-      padding: 78px 0;
+      padding: 88px 0;
+      border-top: 1px solid #202835;
+      scroll-margin-top: 72px;
     }
 
-    .section-head {
-      display: grid;
-      grid-template-columns: 1fr minmax(280px, 520px);
-      gap: 34px;
+    .section-header {
+      display: flex;
+      justify-content: space-between;
       align-items: end;
-      margin-bottom: 34px;
+      gap: 35px;
+      margin-bottom: 38px;
     }
 
-    .section-title {
-      margin-top: 7px;
-      font-size: clamp(2rem, 4vw, 3.3rem);
-      line-height: 1.05;
-      letter-spacing: -0.045em;
+    .section-header h2 {
+      font-size: clamp(32px,4.2vw,49px);
+      letter-spacing: -.06em;
+      line-height: 1.1;
+      margin: 12px 0 0;
     }
 
-    .section-desc {
+    .section-header p {
+      max-width: 390px;
+      font-size: 14px;
       color: var(--muted);
+      margin: 0;
     }
 
-    .grid {
+    /* PROJECTS */
+
+    .projects {
       display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
       gap: 18px;
     }
 
-    .grid-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .project {
+      display: flex;
+      flex-direction: column;
+      min-height: 355px;
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      transition: transform .2s, border-color .2s;
     }
 
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+    .project:hover {
+      transform: translateY(-3px);
+      border-color: #696080;
     }
 
-    .card {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
-      background: var(--card);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.16);
-      transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
-        background 0.2s ease;
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 30px;
+      font: 11px monospace;
     }
 
-    a.card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(56,189,248,0.28);
-      background: rgba(18,28,51,0.92);
+    .project-number { color: #8794a8; }
+    .project-category { color: var(--accent); text-align: right; }
+
+    .project h3 {
+      font-size: 29px;
+      letter-spacing: -.055em;
+      line-height: 1.2;
+      margin-bottom: 12px;
     }
 
-    .card h3 {
-      font-size: 1.12rem;
-      margin-bottom: 10px;
-      letter-spacing: -0.02em;
+    .project-description {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #a8b4c5;
     }
 
-    .card p {
+    .metric {
+      margin-top: auto;
+      padding-top: 12px;
+      color: #d1c5ff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .metric small {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--muted);
     }
 
-    .card .meta {
-      color: #8edcff;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      font-weight: 800;
-      margin-bottom: 11px;
-    }
-
-    .pill-row {
+    .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
+      gap: 7px;
+      margin: 18px 0;
     }
 
-    .pill,
-    .skill {
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.035);
-      color: #d4deed;
-      font-size: 0.78rem;
-      padding: 7px 10px;
+    .tags span {
+      border: 1px solid #30394a;
+      background: #1d2531;
+      border-radius: 5px;
+      padding: 5px 8px;
+      color: #bbc7d7;
+      font: 11px monospace;
     }
 
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 330px;
-    }
-
-    .project-card .project-actions {
+    .project-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: auto;
-      padding-top: 22px;
+      gap: 21px;
+      border-top: 1px solid var(--border);
+      padding-top: 17px;
     }
 
-    .small-link {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 11px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      color: #dce7f7;
-      font-size: 0.82rem;
+    .project-links a {
+      font-size: 13px;
       font-weight: 700;
-      background: rgba(255,255,255,0.03);
+      color: #c9bcff;
     }
 
-    .small-link.primary {
-      color: #06111a;
-      background: #9ee6ff;
-      border-color: transparent;
-    }
+    .project-links a:hover { color: white; }
 
-    .timeline {
-      display: grid;
-      gap: 14px;
-    }
+    .other-projects { margin-top: 30px; }
 
-    .timeline-card {
-      display: grid;
-      grid-template-columns: minmax(180px, 0.32fr) 1fr;
-      gap: 28px;
-      align-items: start;
-      padding: 22px 24px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255,255,255,0.025);
-    }
-
-    .timeline-card .when {
-      color: #8edcff;
-      font-size: 0.79rem;
+    .other-projects h3 {
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 800;
+      letter-spacing: .13em;
+      color: #91a0b5;
     }
 
-    .timeline-card h3 {
+    .other-project {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .other-project a { font-weight: 650; }
+    .other-project a:hover { color: var(--accent); }
+
+    .other-project span {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 85px;
+    }
+
+    .about-text {
+      color: #b0bbcc;
+      font-size: 16px;
+      line-height: 1.95;
+    }
+
+    .about-item {
+      padding: 0 0 20px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-item strong {
+      display: block;
       margin-bottom: 5px;
     }
 
-    .timeline-card p {
+    .about-item p {
+      font-size: 13px;
       color: var(--muted);
+      margin: 0;
     }
 
-    .education-card {
-      min-height: 220px;
+    /* EXPERIENCE */
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      border-bottom: 1px solid var(--border);
+      padding: 23px 0;
     }
 
-    .education-card .institution {
-      color: #8edcff;
-      font-size: 0.82rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 10px;
+    .experience-item time {
+      color: #8e9db0;
+      font: 12px monospace;
     }
 
-    .education-card ul {
-      margin: 14px 0 0 18px;
+    .experience-item h3 {
+      font-size: 17px;
+      margin-bottom: 3px;
+    }
+
+    .experience-item p {
       color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 27px 65px;
     }
 
     .skill-group {
-      margin-top: 28px;
-    }
-
-    .skill-group:first-child {
-      margin-top: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
     }
 
     .skill-group h3 {
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-      color: #dbeafe;
+      font-size: 15px;
+      margin-bottom: 8px;
     }
 
-    .skill-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill {
-      padding: 9px 12px;
-      font-size: 0.82rem;
-    }
-
-    .contact {
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(56,189,248,0.10), transparent 36%),
-        linear-gradient(315deg, rgba(139,92,246,0.13), transparent 40%),
-        rgba(14,21,39,0.88);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-inner {
-      padding: 48px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .contact h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      letter-spacing: -0.05em;
-      line-height: 1;
-      margin-bottom: 14px;
-    }
-
-    .contact p {
-      max-width: 700px;
+    .skill-group p {
       color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+      margin: 0;
     }
 
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-width: 190px;
+    /* EDUCATION */
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
     }
+
+    .education-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--surface);
+    }
+
+    .education-card small {
+      color: var(--accent);
+      font: 11px monospace;
+    }
+
+    .education-card h3 {
+      font-size: 17px;
+      margin: 14px 0 7px;
+      line-height: 1.4;
+    }
+
+    .education-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* CONTACT */
+
+    .contact-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+      padding: 49px;
+      border-radius: 20px;
+      border: 1px solid #403a56;
+      background:
+        radial-gradient(circle at 95% 5%,
+        rgba(157,134,255,.11),transparent 48%),
+        #141820;
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(35px,4vw,50px);
+      line-height: 1.12;
+      letter-spacing: -.06em;
+      margin: 12px 0;
+    }
+
+    .contact-panel p {
+      max-width: 550px;
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .contact-panel .actions { flex-shrink: 0; }
+
+    /* FOOTER */
 
     footer {
-      padding: 34px 0 50px;
-      color: #728198;
-      font-size: 0.88rem;
+      padding: 30px 0 38px;
+      color: #8c98ab;
+      font-size: 12px;
     }
 
-    .footer-inner {
+    .footer-content {
       display: flex;
       justify-content: space-between;
-      gap: 24px;
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
+      gap: 20px;
     }
 
-    @media (max-width: 960px) {
-      .nav-links {
-        display: none;
-      }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
 
-      .hero,
-      .grid-2,
-      .grid-3,
-      .section-head,
-      .contact-inner,
-      .timeline-card {
-        grid-template-columns: 1fr;
-      }
+    /* RESPONSIVE */
 
-      .hero {
-        gap: 36px;
-      }
-
-      .hero-card-inner {
-        min-height: auto;
-      }
-
-      .section-head {
-        align-items: start;
-      }
-
-      .contact-actions {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
+    @media (max-width: 920px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 45px; }
+      .pipeline-card { max-width: 600px; }
+      .section-header { flex-direction: column; align-items: start; }
+      .about-grid { gap: 35px; }
+      .education-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
-      .container {
-        width: min(var(--max), calc(100% - 28px));
-      }
-
-      nav {
-        width: calc(100% - 20px);
-        top: 10px;
-        margin-top: 10px;
-        padding: 12px;
-      }
-
-      .nav-cta {
-        padding: 9px 11px;
-        font-size: 0.82rem;
-      }
-
-      header {
-        padding-top: 58px;
-      }
-
-      h1 {
-        font-size: clamp(3rem, 15vw, 4.5rem);
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .card,
-      .timeline-card {
-        padding: 20px;
-      }
-
-      .contact-inner {
-        padding: 30px 22px;
-      }
-
-      .footer-inner {
+      .container { width: calc(100% - 34px); }
+      nav { min-height: 63px; }
+      .nav-links { display: none; }
+      .hero { padding: 68px 0; }
+      h1 { font-size: clamp(51px,13vw,72px); }
+      section { padding: 64px 0; }
+      .projects, .about-grid, .skills-grid,
+      .education-grid { grid-template-columns: 1fr; }
+      .project { min-height: auto; padding: 23px; }
+      .project-top { margin-bottom: 24px; }
+      .other-project { flex-direction: column; gap: 4px; }
+      .other-project span { text-align: left; }
+      .experience-item { grid-template-columns: 1fr; gap: 7px; }
+      .contact-panel {
+        padding: 30px 25px;
         flex-direction: column;
+        align-items: start;
       }
+      .footer-content { flex-direction: column; }
+      .pipeline-card { padding: 15px; }
+      .pipeline-inner { padding: 15px; }
+      .pipeline-node { font-size: 9px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        transition: none !important;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
 
 <body>
-  <div class="glow one"></div>
-  <div class="glow two"></div>
 
-  <nav>
-    <a href="#" class="brand" aria-label="Home">
-      <span class="brand-icon">Q</span>
-      <span>QuietLess</span>
-    </a>
+  <!-- NAVIGATION -->
 
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
+  <div class="topbar">
+    <nav class="container" aria-label="Main navigation">
+      <a class="logo" href="#top">tolga<span class="accent">.</span>dev</a>
 
-    <a class="nav-cta" href="#contact">Let's Connect</a>
-  </nav>
-
-  <header>
-    <div class="container hero">
-      <div>
-        <div class="kicker">
-          <span class="pulse"></span>
-          Data Science · Machine Learning · AI Engineering
-        </div>
-
-        <h1>
-          Building AI<br />
-          from <span class="gradient-text">data</span><br />
-          to deployment.
-        </h1>
-
-        <p class="hero-text">
-          I’m <strong>Tolga Değirmenci</strong>, a Computer Engineering graduate focused on
-          Data Science, Machine Learning and AI Engineering. I build end-to-end systems
-          spanning predictive modeling, explainability, computer vision, generative AI and
-          user-facing data products.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">View Selected Projects</a>
-          <a class="btn btn-ghost" href="https://github.com/QuietLess" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/tolga-degirmencii/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn btn-ghost" href="https://www.kaggle.com/tolgadeirmenci" target="_blank" rel="noopener noreferrer">Kaggle</a>
-          <a class="btn btn-ghost" href="https://huggingface.co/QuietLess" target="_blank" rel="noopener noreferrer">Hugging Face</a>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <strong>4</strong>
-            <span>Internship Experiences</span>
-          </div>
-          <div class="stat">
-            <strong>4</strong>
-            <span>Featured AI / ML Projects</span>
-          </div>
-          <div class="stat">
-            <strong>EU</strong>
-            <span>Authorized to Work Across the EU</span>
-          </div>
-        </div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
       </div>
 
-      <div class="hero-card">
-        <div class="hero-card-inner">
-          <div class="terminal-bar">
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+      <a class="nav-contact" href="mailto:tolgadegirmenci4@gmail.com">
+        Let's talk ↗
+      </a>
+    </nav>
+  </div>
+
+  <main id="top">
+
+    <!-- HERO -->
+
+    <header class="hero">
+      <div class="container hero-grid">
+
+        <div>
+          <div class="availability">
+            Open to opportunities across Europe
           </div>
 
-          <div class="code">
-            const profile = {<br />
-            &nbsp;&nbsp;name: <span>"Tolga Değirmenci"</span>,<br />
-            &nbsp;&nbsp;role: <span>"Data Scientist / ML Engineer"</span>,<br />
-            &nbsp;&nbsp;focus: <span>["ML", "Computer Vision", "GenAI"]</span>,<br />
-            &nbsp;&nbsp;location: <span>"Istanbul, Türkiye"</span>,<br />
-            &nbsp;&nbsp;workStatus: <span>"EU work eligible"</span><br />
-            }
+          <h1>
+            Hi, I'm Tolga<span class="accent">.</span><br>
+            I build<br>
+            intelligent systems.
+          </h1>
+
+          <p class="hero-role">
+            Data Scientist & Machine Learning Engineer
+          </p>
+
+          <p class="hero-description">
+            I'm Tolga Değirmenci, a Computer Engineering graduate
+            focused on building intelligent, reliable, and
+            production-oriented machine learning systems.
+            My work spans recommendation engines, predictive
+            modeling, MLOps, and applied AI.
+          </p>
+
+          <div class="actions">
+            <a href="#work" class="button primary">
+              Explore my work ↗
+            </a>
+            <a href="https://github.com/QuietLess"
+               class="button secondary"
+               target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+            <a href="https://www.linkedin.com/in/tolga-degirmencii/"
+               class="button secondary"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
           </div>
 
-          <div class="profile-orb">
-            <span class="profile-fallback">TD</span>
-            <img
-              src="logo.png"
-              alt="QuietLess logo"
-              class="profile-logo"
-              onerror="this.style.display='none';"
-            />
-          </div>
-
-          <div class="mini-card">
-            <h3>Core Stack</h3>
-            <p>
-              Python · SQL · Pandas · NumPy · Scikit-learn · LightGBM · SHAP ·
-              OpenCV · YOLO · Streamlit · Power BI · Git
-            </p>
-          </div>
-
-          <div class="mini-card">
-            <h3>Current Direction</h3>
-            <p>
-              Production-oriented machine learning, explainable AI, computer vision,
-              GenAI / AI agents, model serving, testing and reproducible ML workflows.
-            </p>
+          <div class="hero-meta">
+            Istanbul, Türkiye &nbsp; / &nbsp;
+            Turkish–Greek dual citizen · EU work eligible
           </div>
         </div>
-      </div>
-    </div>
-  </header>
 
-  <main>
+        <div class="pipeline-card">
+          <div class="pipeline-top">
+            <span>ml_system.pipeline</span>
+            <span class="dots">● ● ●</span>
+          </div>
+
+          <div class="pipeline-inner">
+            <div class="eyebrow">// from idea to impact</div>
+
+            <h3>Beyond the notebook.</h3>
+
+            <p>Thoughtful ML engineering, end to end.</p>
+
+            <div class="pipeline-flow">
+              <span class="pipeline-node">DATA</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-node">MODEL</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-node active">SERVE</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-node active">MONITOR</span>
+            </div>
+
+            <div class="pipeline-foot">
+              <span>Focus: <strong>Applied ML & MLOps</strong></span>
+              <span>Status: <strong>building</strong></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- FEATURED PROJECTS -->
+
+    <section id="work">
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">01 / Selected Work</div>
+            <h2>Things I've built.</h2>
+          </div>
+          <p>
+            Four projects spanning recommendation systems,
+            production ML, explainable prediction, and computer vision.
+          </p>
+        </div>
+
+        <div class="projects">
+
+          <!-- CROSSVERSE -->
+
+          <article class="project">
+            <div class="project-top">
+              <span class="project-number">01 / 04</span>
+              <span class="project-category">RECOMMENDATIONS · RANKING</span>
+            </div>
+
+            <h3>CrossVerse</h3>
+
+            <p class="project-description">
+              A cross-domain recommendation engine connecting movies,
+              TV shows, and video games using real shared-user
+              preferences. Combines collaborative filtering,
+              embeddings, two-tower retrieval, and LightGBM LambdaRank.
+            </p>
+
+            <div class="metric">
+              119K shared users
+              <small>
+                +16% / +24% NDCG@10 over popularity baselines
+              </small>
+            </div>
+
+            <div class="tags">
+              <span>LightGBM</span>
+              <span>LambdaRank</span>
+              <span>Implicit ALS</span>
+              <span>Embeddings</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://crossverse-app.web.app/?to=game&amp;t=0.8"
+                 target="_blank" rel="noopener noreferrer">
+                Live demo ↗
+              </a>
+              <a href="https://github.com/QuietLess/Crossverse"
+                 target="_blank" rel="noopener noreferrer">
+                Source code ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- CHURNOPS -->
+
+          <article class="project">
+            <div class="project-top">
+              <span class="project-number">02 / 04</span>
+              <span class="project-category">PRODUCTION ML · MLOPS</span>
+            </div>
+
+            <h3>ChurnOps</h3>
+
+            <p class="project-description">
+              An end-to-end churn prediction platform covering
+              model training, experiment tracking, serving,
+              prediction logging, drift monitoring, and automated
+              testing. Designed around the complete ML lifecycle.
+            </p>
+
+            <div class="metric">
+              0.840 ROC-AUC · 0.662 PR-AUC
+              <small>107 automated tests · 86% test coverage</small>
+            </div>
+
+            <div class="tags">
+              <span>MLflow</span>
+              <span>FastAPI</span>
+              <span>Docker</span>
+              <span>Grafana</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/QuietLess/churnops-production-ml"
+                 target="_blank" rel="noopener noreferrer">
+                Source code ↗
+              </a>
+              <a href="https://medium.com/@tolgadegirmenci4/from-notebook-to-production-building-churnops-an-end-to-end-mlops-platform-for-churn-prediction-bbea546f1d25"
+                 target="_blank" rel="noopener noreferrer">
+                Case study ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- BUY OR BYE -->
+
+          <article class="project">
+            <div class="project-top">
+              <span class="project-number">03 / 04</span>
+              <span class="project-category">PREDICTIVE ML · EXPLAINABILITY</span>
+            </div>
+
+            <h3>Buy or Bye</h3>
+
+            <p class="project-description">
+              An explainable e-commerce purchase-intent prediction
+              system using calibrated ensemble models,
+              SHAP-based explanations, cost-sensitive thresholds,
+              and interactive what-if analysis.
+            </p>
+
+            <div class="metric">
+              0.745 PR-AUC · 0.932 ROC-AUC
+              <small>Held-out test set performance</small>
+            </div>
+
+            <div class="tags">
+              <span>LightGBM</span>
+              <span>Random Forest</span>
+              <span>SHAP</span>
+              <span>Streamlit</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://buy-or-bye.streamlit.app/"
+                 target="_blank" rel="noopener noreferrer">
+                Live demo ↗
+              </a>
+              <a href="https://github.com/QuietLess/Buy-or-Bye-"
+                 target="_blank" rel="noopener noreferrer">
+                Source code ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- SUSPICIOUS ACTIVITY MONITOR -->
+
+          <article class="project">
+            <div class="project-top">
+              <span class="project-number">04 / 04</span>
+              <span class="project-category">COMPUTER VISION · FULL-STACK AI</span>
+            </div>
+
+            <h3>Suspicious Activity Monitor</h3>
+
+            <p class="project-description">
+              A graduation project connecting YOLOv11-based
+              video detection with backend processing, Firebase,
+              and a mobile interface for suspicious-activity
+              alerts and remote monitoring.
+            </p>
+
+            <div class="metric">
+              End-to-end AI application
+              <small>From video detection to mobile notification</small>
+            </div>
+
+            <div class="tags">
+              <span>YOLOv11</span>
+              <span>OpenCV</span>
+              <span>Firebase</span>
+              <span>SwiftUI</span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://github.com/EEXimium/Suspicious-Activity-Monitor"
+                 target="_blank" rel="noopener noreferrer">
+                Source code ↗
+              </a>
+              <a href="https://medium.com/@tolgadegirmenci4/8ba366ca26d9"
+                 target="_blank" rel="noopener noreferrer">
+                Case study ↗
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- OTHER PROJECTS -->
+
+        <div class="other-projects">
+          <h3>Also built</h3>
+
+          <div class="other-project">
+            <a href="https://github.com/QuietLess/YouTube-AI-Lyrics-Album-Analysis-Agent"
+               target="_blank" rel="noopener noreferrer">
+              YouTube AI Lyrics & Album Analysis Agent ↗
+            </a>
+            <span>LLM-powered music and text analysis</span>
+          </div>
+
+          <div class="other-project">
+            <a href="https://github.com/QuietLess/Vision-Edit-Studio"
+               target="_blank" rel="noopener noreferrer">
+              Vision Edit Studio ↗
+            </a>
+            <span>Interactive image processing and computer vision</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
     <section id="about">
       <div class="container">
-        <div class="section-head">
+
+        <div class="section-header">
           <div>
-            <div class="eyebrow">About</div>
-            <h2 class="section-title">Computer Engineer building practical AI systems.</h2>
+            <div class="eyebrow">02 / About</div>
+            <h2>Engineering-minded.<br>Curiosity-driven.</h2>
           </div>
+        </div>
 
-          <p class="section-desc">
-            My background combines business intelligence, data analytics and machine learning.
-            I am especially interested in projects where modeling is only one part of the solution:
-            data preparation, evaluation, explainability, integration and usable applications matter too.
+        <div class="about-grid">
+
+          <p class="about-text">
+            I'm a Computer Engineering graduate who enjoys building
+            machine learning systems that are as practical as they
+            are interesting.
+
+            <br><br>
+
+            I care about how models are evaluated, explained,
+            deployed, and maintained — not just how they perform
+            in a notebook.
+
+            <br><br>
+
+            My background in business intelligence and data
+            warehousing complements my work in recommendation
+            systems, predictive modeling, computer vision,
+            and applied artificial intelligence.
           </p>
-        </div>
 
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>📊 Data & Analytics</h3>
-            <p>
-              I work with Python, SQL, Pandas, NumPy, Excel and Power BI to turn raw data
-              into structured analysis, visualizations and decision-support outputs.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>🤖 Machine Learning</h3>
-            <p>
-              My projects cover classification, feature engineering, model evaluation,
-              calibration, threshold optimization, explainability and robustness analysis.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>🧠 Applied AI</h3>
-            <p>
-              I build AI-powered applications using computer vision, LLM APIs,
-              embeddings and interactive interfaces rather than limiting work to notebooks.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-head">
           <div>
-            <div class="eyebrow">Selected Work</div>
-            <h2 class="section-title">AI & Machine Learning projects.</h2>
-          </div>
-
-          <p class="section-desc">
-            A selection of projects that demonstrate different parts of my technical profile:
-            predictive modeling, explainable ML, real-time computer vision and LLM-powered pipelines.
-          </p>
-        </div>
-
-        <div class="grid grid-2">
-          <article class="card project-card">
-            <div class="meta">Machine Learning · Explainable AI · Capstone</div>
-            <h3>🛒 Buy or Bye</h3>
-            <p>
-              An end-to-end purchase-intent prediction system for e-commerce sessions.
-              The project combines calibrated ensemble models, feature engineering,
-              cost-sensitive decision thresholds, SHAP explainability and robustness analysis.
-            </p>
-
-            <div class="pill-row">
-              <span class="pill">Python</span>
-              <span class="pill">LightGBM</span>
-              <span class="pill">Random Forest</span>
-              <span class="pill">SHAP</span>
-              <span class="pill">Calibration</span>
-              <span class="pill">Streamlit</span>
-            </div>
-
-            <div class="project-actions">
-              <a class="small-link primary" href="https://buy-or-bye.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
-              <a class="small-link" href="https://github.com/QuietLess/Buy-or-Bye-" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a class="small-link" href="https://medium.com/@tolgadegirmenci4/from-browsing-to-buying-building-an-explainable-purchase-intent-prediction-system-e84c99efd602" target="_blank" rel="noopener noreferrer">Medium</a>
-            </div>
-          </article>
-
-          <article class="card project-card">
-            <div class="meta">Computer Vision · Deep Learning · Graduation Project</div>
-            <h3>🛡️ Suspicious Activity Monitor</h3>
-            <p>
-              A real-time computer vision system that processes video streams,
-              detects suspicious objects or activity and connects the AI workflow
-              with Firebase and a SwiftUI mobile application.
-            </p>
-
-            <div class="pill-row">
-              <span class="pill">YOLOv11</span>
-              <span class="pill">OpenCV</span>
-              <span class="pill">Python</span>
-              <span class="pill">Firebase</span>
-              <span class="pill">SwiftUI</span>
-              <span class="pill">Real-Time CV</span>
-            </div>
-
-            <div class="project-actions">
-              <a class="small-link" href="https://github.com/QuietLess/Suspicious-Activity-Monitor" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="card project-card">
-            <div class="meta">Generative AI · LLM Pipeline</div>
-            <h3>🎵 YouTube AI Lyrics & Album Analysis Agent</h3>
-            <p>
-              An AI pipeline that starts from a YouTube music URL, identifies the artist,
-              retrieves album and lyrics information, processes the content and generates
-              structured semantic and token-level analysis.
-            </p>
-
-            <div class="pill-row">
-              <span class="pill">Python</span>
-              <span class="pill">GPT-4o-mini</span>
-              <span class="pill">Apify</span>
-              <span class="pill">Embeddings</span>
-              <span class="pill">Nomic</span>
-              <span class="pill">Web Data</span>
-            </div>
-
-            <div class="project-actions">
-              <a class="small-link" href="https://github.com/QuietLess/YouTube-AI-Lyrics-Album-Analysis-Agent" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-
-          <article class="card project-card">
-            <div class="meta">Computer Vision · Interactive Application</div>
-            <h3>🎨 Vision Edit Studio</h3>
-            <p>
-              An interactive image-processing application built around OpenCV and Streamlit.
-              It brings common computer vision transformations and image-analysis operations
-              into a modular, user-facing interface with testing and CI support.
-            </p>
-
-            <div class="pill-row">
-              <span class="pill">Python</span>
-              <span class="pill">OpenCV</span>
-              <span class="pill">NumPy</span>
-              <span class="pill">Streamlit</span>
-              <span class="pill">Testing</span>
-              <span class="pill">GitHub Actions</span>
-            </div>
-
-            <div class="project-actions">
-              <a class="small-link" href="https://github.com/QuietLess/Vision-Edit-Studio" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Experience</div>
-            <h2 class="section-title">Experience across data, BI and ML.</h2>
-          </div>
-
-          <p class="section-desc">
-            My internship experience spans machine learning engineering,
-            business intelligence, data warehousing and management information systems.
-          </p>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-card">
-            <div class="when">Machine Learning</div>
-            <div>
-              <h3>Argenit Teknoloji</h3>
-              <p>Machine Learning Engineering Intern</p>
-            </div>
-          </div>
-
-          <div class="timeline-card">
-            <div class="when">BI & Data Warehouse</div>
-            <div>
-              <h3>Doğuş Teknoloji</h3>
-              <p>Business Intelligence & Data Warehouse Intern</p>
-            </div>
-          </div>
-
-          <div class="timeline-card">
-            <div class="when">MIS & Analytics</div>
-            <div>
-              <h3>DenizBank</h3>
-              <p>Management Information Systems Intern</p>
-            </div>
-          </div>
-
-          <div class="timeline-card">
-            <div class="when">Business Intelligence</div>
-            <div>
-              <h3>OBAMIND Teknoloji Hizmetleri</h3>
-              <p>Business Intelligence Intern</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Education & Training</div>
-            <h2 class="section-title">Academic foundation and applied learning.</h2>
-          </div>
-
-          <p class="section-desc">
-            My formal Computer Engineering education is supported by hands-on training
-            focused on data science, machine learning, generative AI and applied project development.
-          </p>
-        </div>
-
-        <div class="grid grid-3">
-          <div class="card education-card">
-            <div class="institution">Işık University</div>
-            <h3>BSc Computer Engineering</h3>
-            <p>2019 – 2025</p>
-          </div>
-
-          <div class="card education-card">
-            <div class="institution">Google AI & Technology Academy</div>
-            <h3>Data Science Track</h3>
-            <p>
-              Applied training in data science and machine learning with project-based work.
-            </p>
-          </div>
-
-          <div class="card education-card">
-            <div class="institution">Europe Coding School</div>
-            <h3>Data Science & AI Training</h3>
-            <p>
-              Project-based learning covering machine learning, generative AI,
-              computer vision, deep learning and Streamlit application development.
-            </p>
-            <ul>
-              <li>Buy or Bye capstone project</li>
-              <li>Computer Vision & OpenCV projects</li>
-              <li>Deep Learning / CNN exercises</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Technical Skills</div>
-            <h2 class="section-title">Tools I use to build data & AI products.</h2>
-          </div>
-
-          <p class="section-desc">
-            I prioritize a practical stack that supports analysis, modeling,
-            explainability, computer vision, application development and deployment workflows.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="skill-group">
-            <h3>Data Science & Machine Learning</h3>
-            <div class="skill-cloud">
-              <span class="skill">Python</span>
-              <span class="skill">Pandas</span>
-              <span class="skill">NumPy</span>
-              <span class="skill">Scikit-learn</span>
-              <span class="skill">LightGBM</span>
-              <span class="skill">Random Forest</span>
-              <span class="skill">SHAP</span>
-              <span class="skill">TensorFlow</span>
-              <span class="skill">Feature Engineering</span>
-              <span class="skill">Model Evaluation</span>
-              <span class="skill">Probability Calibration</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <h3>Computer Vision & AI</h3>
-            <div class="skill-cloud">
-              <span class="skill">OpenCV</span>
-              <span class="skill">YOLO</span>
-              <span class="skill">Computer Vision</span>
-              <span class="skill">Generative AI</span>
-              <span class="skill">LLM APIs</span>
-              <span class="skill">Embeddings</span>
-              <span class="skill">Hugging Face</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <h3>Data & Business Intelligence</h3>
-            <div class="skill-cloud">
-              <span class="skill">SQL</span>
-              <span class="skill">Microsoft SQL Server</span>
-              <span class="skill">MySQL</span>
-              <span class="skill">Power BI</span>
-              <span class="skill">Excel</span>
-              <span class="skill">Data Analysis</span>
-              <span class="skill">Reporting</span>
-            </div>
-          </div>
-
-          <div class="skill-group">
-            <h3>Development & Tools</h3>
-            <div class="skill-cloud">
-              <span class="skill">Git</span>
-              <span class="skill">GitHub</span>
-              <span class="skill">GitHub Actions</span>
-              <span class="skill">Streamlit</span>
-              <span class="skill">Firebase</span>
-              <span class="skill">Jupyter Notebook</span>
-              <span class="skill">Java</span>
-              <span class="skill">AWS</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="focus">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <div class="eyebrow">Current Focus</div>
-            <h2 class="section-title">Moving from experimentation to production-minded ML.</h2>
-          </div>
-
-          <p class="section-desc">
-            I am strengthening the engineering side of my profile while continuing to build
-            applied machine learning and AI projects.
-          </p>
-        </div>
-
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>⚙️ ML Engineering</h3>
-            <p>
-              Model serving, APIs, reproducible pipelines, testing,
-              containerization and maintainable project structure.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>🧠 GenAI & Agents</h3>
-            <p>
-              LLM APIs, embeddings, AI workflows and agentic systems
-              that connect reasoning with practical tools and data.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>👁️ Computer Vision</h3>
-            <p>
-              Real-time CV workflows, detection systems and user-facing
-              applications built around OpenCV and deep learning models.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact">
-          <div class="contact-inner">
-            <div>
-              <div class="eyebrow">Contact</div>
-              <h2>Let’s build something useful.</h2>
+            <div class="about-item">
+              <strong>Machine learning, end to end</strong>
               <p>
-                I am open to Data Scientist, Machine Learning Engineer and AI Engineer
-                opportunities across Europe. I am an EU citizen and do not require sponsorship
-                to work within the European Union.
+                From feature engineering and validation
+                to serving and monitoring.
               </p>
             </div>
 
-            <div class="contact-actions">
-              <a class="btn btn-primary" href="mailto:tolgadegirmenci4@gmail.com">Email Me</a>
-              <a class="btn btn-ghost" href="https://www.linkedin.com/in/tolga-degirmencii/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a class="btn btn-ghost" href="https://github.com/QuietLess" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <div class="about-item">
+              <strong>Systems that people can use</strong>
+              <p>
+                Interactive demos, API-backed applications,
+                and reproducible workflows.
+              </p>
+            </div>
+
+            <div class="about-item">
+              <strong>Always learning</strong>
+              <p>
+                Exploring recommendation systems,
+                MLOps, GenAI, and intelligent products.
+              </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience">
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">03 / Experience</div>
+            <h2>Where I've worked.</h2>
+          </div>
+          <p>
+            Experience across machine learning engineering,
+            analytics, BI, and data warehousing.
+          </p>
+        </div>
+
+        <div class="experience-item">
+          <time>Jul – Dec 2024</time>
+          <div>
+            <h3>Doğuş Teknoloji</h3>
+            <p>
+              Business Intelligence & Data Warehouse Intern
+              · Power BI, SQL and reporting automation
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <time>Feb – Jul 2024</time>
+          <div>
+            <h3>DenizBank</h3>
+            <p>
+              Management Information Systems Intern
+              · Executive dashboards and analytics
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <time>Feb – Oct 2023</time>
+          <div>
+            <h3>OBAMIND Teknoloji Hizmetleri</h3>
+            <p>
+              Business Intelligence Intern
+              · Power BI and SQL Server reporting
+            </p>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <time>Jun – Aug 2022</time>
+          <div>
+            <h3>Argenit Teknoloji</h3>
+            <p>
+              Machine Learning Engineering Intern
+              · CNN classification and Vision Transformers
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">04 / Toolkit</div>
+            <h2>Tools of the trade.</h2>
+          </div>
+          <p>
+            Technologies I use across machine learning,
+            model deployment, and AI applications.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-group">
+            <h3>Machine Learning</h3>
+            <p>
+              Python · Pandas · NumPy · Scikit-learn ·
+              LightGBM · TensorFlow · SHAP
+            </p>
+          </div>
+
+          <div class="skill-group">
+            <h3>Recommendations & Ranking</h3>
+            <p>
+              Collaborative Filtering · Implicit ALS ·
+              Embeddings · Two-Tower Models · LambdaRank
+            </p>
+          </div>
+
+          <div class="skill-group">
+            <h3>MLOps & Backend</h3>
+            <p>
+              MLflow · FastAPI · Docker · PostgreSQL ·
+              Evidently · Prometheus · Grafana · GitHub Actions
+            </p>
+          </div>
+
+          <div class="skill-group">
+            <h3>Applied AI & Data</h3>
+            <p>
+              OpenCV · YOLO · LLM APIs · Streamlit ·
+              SQL · Power BI · Firebase · AWS
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+
+    <section id="education">
+      <div class="container">
+
+        <div class="section-header">
+          <div>
+            <div class="eyebrow">05 / Education</div>
+            <h2>Foundation & learning.</h2>
+          </div>
+        </div>
+
+        <div class="education-grid">
+
+          <div class="education-card">
+            <small>2019 — 2025</small>
+            <h3>BSc Computer Engineering</h3>
+            <p>Işık University</p>
+          </div>
+
+          <div class="education-card">
+            <small>2026</small>
+            <h3>Data Science & AI Program</h3>
+            <p>Europe Coding School</p>
+          </div>
+
+          <div class="education-card">
+            <small>2026</small>
+            <h3>Data Science Track</h3>
+            <p>Google AI & Technology Academy</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+      <div class="container">
+
+        <div class="contact-panel">
+          <div>
+            <div class="eyebrow">06 / Get in Touch</div>
+            <h2>Let's build something<br>worth using.</h2>
+            <p>
+              Open to Data Scientist, Machine Learning Engineer
+              and AI Engineer opportunities across Europe.
+              Turkish–Greek dual citizen, eligible to work in the EU.
+            </p>
+          </div>
+
+          <div class="actions">
+            <a class="button primary"
+               href="mailto:tolgadegirmenci4@gmail.com">
+              Email me ↗
+            </a>
+            <a class="button secondary"
+               href="https://www.linkedin.com/in/tolga-degirmencii/"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
+  <!-- FOOTER -->
+
   <footer>
-    <div class="container footer-inner">
-      <span>© 2026 Tolga Değirmenci</span>
-      <span>Built with HTML & CSS · Hosted on GitHub Pages</span>
+    <div class="container footer-content">
+      <span>© 2026 Tolga Değirmenci · Built with HTML & CSS</span>
+
+      <div class="footer-links">
+        <a href="https://github.com/QuietLess"
+           target="_blank" rel="noopener noreferrer">GitHub</a>
+
+        <a href="https://medium.com/@tolgadegirmenci4"
+           target="_blank" rel="noopener noreferrer">Medium</a>
+
+        <a href="#top">Back to top ↑</a>
+      </div>
     </div>
   </footer>
+
 </body>
 </html>
